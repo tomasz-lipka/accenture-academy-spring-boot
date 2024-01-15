@@ -12,31 +12,29 @@ class ChurchDataInitializer {
 
     @PostConstruct
     void initChurches(){
-        ChurchDao churchDao = new ChurchDao(
-        "Kościół sw. Krzyża",
-        "Warszawa",
-        130,
-        1000,
-        20000.0
-        );
-        churchService.addChurch(churchDao);
-
-        ChurchDao churchDao2 = new ChurchDao(
+        churchService.addChurch(
+                new ChurchDao(
+                "Kościół sw. Krzyża",
+                "Warszawa",
+                130,
+                1000,
+                20000.0
+        ));
+        churchService.addChurch(
+                new ChurchDao(
                 "Kościół sw. Krzyża",
                 "Łódź",
                 130,
                 1000,
                 20000.0
-        );
-        churchService.addChurch(churchDao2);
-
-        ChurchDao churchDao3 = new ChurchDao(
+        ));
+        churchService.addChurch(
+                new ChurchDao(
                 "Kościół sw. Krzyża",
                 "Kraków",
                 130,
                 1000,
                 20000.0
-        );
-        churchService.addChurch(churchDao3);
+        ));
     }
 }
