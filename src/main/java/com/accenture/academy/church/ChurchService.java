@@ -10,7 +10,7 @@ import java.util.List;
 class ChurchService {
 
     private final ChurchRepository churchRepository;
-    private ChurchMapper churchMapper = new ChurchMapper();
+
     List<ChurchDao> getAllChurches() {
         return churchRepository.findAll();
     }
@@ -20,6 +20,6 @@ class ChurchService {
     }
 
     void addChurch(ChurchDto churchDto){
-        churchRepository.save(churchMapper.mapDtoToDao(churchDto));
+        churchRepository.save(ChurchMapper.mapDtoToDao(churchDto));
     }
 }
