@@ -10,11 +10,16 @@ import java.util.List;
 class ChurchService {
 
     private final ChurchRepository churchRepository;
+    private ChurchMapper churchMapper = new ChurchMapper();
     List<ChurchDao> getAllChurches() {
         return churchRepository.findAll();
     }
 
     void addChurch(ChurchDao churchDao){
         churchRepository.save(churchDao);
+    }
+
+    void addChurch(ChurchDto churchDto){
+        churchRepository.save(churchMapper.mapDtoToDao(churchDto));
     }
 }
