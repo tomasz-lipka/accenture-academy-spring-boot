@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+import static org.springframework.http.HttpStatus.NO_CONTENT;
 import static org.springframework.http.HttpStatus.OK;
 
 @RestController()
@@ -29,5 +30,11 @@ class LeaderRestController {
     @ResponseStatus(OK)
     LeaderDao getLeaderById(@PathVariable long id){
         return leaderService.getLeaderById(id);
+    }
+
+    @PutMapping(path = "/{id}")
+    @ResponseStatus(NO_CONTENT)
+    void updateLeader(@PathVariable long id, @RequestBody LeaderDto leaderDto){
+        leaderService.updateLeader(id, leaderDto);
     }
 }

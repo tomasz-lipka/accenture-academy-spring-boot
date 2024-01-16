@@ -22,6 +22,10 @@ class LeaderService {
         leaderRepository.save(LeaderMapper.mapDtoToDao(leaderDto));
     }
 
+    void updateLeader(long id, LeaderDto leaderDto){
+        leaderRepository.save(LeaderMapper.mapDtoToDao(id, leaderDto));
+    }
+
     LeaderDao getLeaderById(long id) {
         return leaderRepository
                 .findByID(id)
