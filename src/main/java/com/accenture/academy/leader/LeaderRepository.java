@@ -30,10 +30,6 @@ class LeaderRepository {
     }
 
     public List<LeaderDao> getByName(String name) {
-        return iLeaderRepository
-                .findAll()
-                .stream()
-                .filter(leader -> leader.getName().equals(name))
-                .toList();
+        return iLeaderRepository.findByName(name);
     }
 }
