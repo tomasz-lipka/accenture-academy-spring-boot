@@ -25,16 +25,7 @@ class LeaderRestController {
     }
 
     @GetMapping(path = "/{id}")
-    ResponseEntity getLeaderById(@PathVariable long id){
-        try{
-            return ResponseEntity
-                    .status(200)
-                    .body(leaderService.getLeaderById(id));
-        } catch (LeaderNotFoundException e){
-            return ResponseEntity
-                    .status(404)
-                    .body(e.getMessage());
-        }
+    ResponseEntity<?> getLeaderById(@PathVariable long id){
+        return ResponseEntity.ok(leaderService.getLeaderById(id));
     }
-    
 }
