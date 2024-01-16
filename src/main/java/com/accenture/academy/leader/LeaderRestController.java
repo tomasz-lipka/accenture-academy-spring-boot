@@ -2,10 +2,11 @@ package com.accenture.academy.leader;
 
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+
+import static org.springframework.http.HttpStatus.OK;
 
 @RestController()
 @RequestMapping("/api/leaders")
@@ -25,7 +26,8 @@ class LeaderRestController {
     }
 
     @GetMapping(path = "/{id}")
-    ResponseEntity<?> getLeaderById(@PathVariable long id){
-        return ResponseEntity.ok(leaderService.getLeaderById(id));
+    @ResponseStatus(OK)
+    LeaderDao getLeaderById(@PathVariable long id){
+        return leaderService.getLeaderById(id);
     }
 }
