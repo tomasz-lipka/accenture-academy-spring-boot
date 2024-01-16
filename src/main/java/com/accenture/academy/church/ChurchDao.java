@@ -2,10 +2,11 @@ package com.accenture.academy.church;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import static jakarta.persistence.GenerationType.*;
 
 @Entity
 @Data
@@ -13,7 +14,7 @@ import lombok.NoArgsConstructor;
 class ChurchDao {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = AUTO)
     private Long id;
     private String name;
     private String nameOfCity;
