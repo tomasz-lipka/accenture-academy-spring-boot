@@ -28,4 +28,8 @@ class ChurchService {
                 .findByID(id)
                 .orElseThrow(()->new ChurchNotFoundException("Church with id " + id + " not found"));
     }
+
+    public void updateChurch(long id, ChurchDto churchDto) {
+        churchRepository.save(ChurchMapper.mapDtoToDao(id, churchDto));
+    }
 }

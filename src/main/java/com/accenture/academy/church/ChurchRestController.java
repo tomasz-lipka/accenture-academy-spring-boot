@@ -2,7 +2,6 @@ package com.accenture.academy.church;
 
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -36,5 +35,10 @@ class ChurchRestController {
                     .status(404)
                     .body(e.getMessage());
         }
+    }
+
+    @PutMapping(path = "/{id}")
+    void updateChurch(@PathVariable long id, @RequestBody ChurchDto churchDto){
+        churchService.updateChurch(id, churchDto);
     }
 }
