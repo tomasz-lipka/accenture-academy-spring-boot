@@ -5,6 +5,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 import static org.springframework.http.HttpStatus.NO_CONTENT;
 import static org.springframework.http.HttpStatus.OK;
@@ -17,8 +18,12 @@ class LeaderRestController {
     private final LeaderService leaderService;
 
     @GetMapping()
-    List<LeaderDao> getAllLeaders(){
-        return leaderService.getAllLeaders();
+    List<LeaderDao> getAllLeaders(@RequestParam(required = false) Optional<String> name){
+        if(name.isEmpty()) {
+            return leaderService.getAllLeaders();
+        } else {
+            return leaderService.getLeaderByName(name.get());
+        }
     }
 
     @PostMapping
