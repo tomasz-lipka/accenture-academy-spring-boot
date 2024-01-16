@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 @RequiredArgsConstructor
@@ -16,5 +17,9 @@ class LeaderRepository {
 
     public void save(LeaderDao leaderDao) {
         iLeaderRepository.save(leaderDao);
+    }
+
+    public Optional<LeaderDao> findByID(Long id){
+        return iLeaderRepository.findById(id);
     }
 }

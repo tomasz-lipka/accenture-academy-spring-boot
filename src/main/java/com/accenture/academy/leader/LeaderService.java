@@ -21,4 +21,10 @@ class LeaderService {
     void addLeader(LeaderDto leaderDto){
         leaderRepository.save(LeaderMapper.mapDtoToDao(leaderDto));
     }
+
+    LeaderDao getLeaderById(long id) {
+        return leaderRepository
+                .findByID(id)
+                .orElseThrow(()->new LeaderNotFoundException("Leader with id " + id + " not found"));
+    }
 }
