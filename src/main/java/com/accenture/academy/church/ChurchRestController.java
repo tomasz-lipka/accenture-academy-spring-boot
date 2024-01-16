@@ -22,4 +22,9 @@ class ChurchRestController {
     void addChurch(@RequestBody ChurchDto churchDto){
         churchService.addChurch(churchDto);
     }
+
+    @GetMapping(path = "/{id}")
+    ChurchDao getChurchById(@PathVariable long id){
+        return churchService.getChurchById(id);
+    }
 }

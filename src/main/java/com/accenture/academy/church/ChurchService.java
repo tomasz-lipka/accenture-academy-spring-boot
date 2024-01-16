@@ -22,4 +22,10 @@ class ChurchService {
     void addChurch(ChurchDto churchDto){
         churchRepository.save(ChurchMapper.mapDtoToDao(churchDto));
     }
+
+    public ChurchDao getChurchById(long id) {
+        return churchRepository
+                .findByID(id)
+                .orElseThrow();
+    }
 }
