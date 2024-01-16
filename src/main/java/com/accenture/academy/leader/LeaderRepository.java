@@ -1,6 +1,8 @@
 package com.accenture.academy.leader;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Example;
+import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -25,5 +27,13 @@ class LeaderRepository {
 
     public void deleteById(long id) {
         iLeaderRepository.deleteById(id);
+    }
+
+    public List<LeaderDao> getByName(String name) {
+        return iLeaderRepository
+                .findAll()
+                .stream()
+                .filter(leader -> leader.getName().equals(name))
+                .toList();
     }
 }

@@ -35,4 +35,8 @@ class LeaderService {
     public void deleteLeaderById(long id) {
         leaderRepository.deleteById(id);
     }
+
+    public List<LeaderDao> getLeaderByName(String name) {
+        return leaderRepository.getByName(name);
+    }
 }

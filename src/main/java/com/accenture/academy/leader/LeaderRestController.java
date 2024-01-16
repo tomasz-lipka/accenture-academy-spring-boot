@@ -43,4 +43,10 @@ class LeaderRestController {
     void deleteById(@PathVariable long id){
         leaderService.deleteLeaderById(id);
     }
+
+    @GetMapping(path = "/name")
+    @ResponseStatus(OK)
+    public List<LeaderDao> geByName(@RequestParam String name) {
+        return leaderService.getLeaderByName(name);
+    }
 }
