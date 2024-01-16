@@ -2,9 +2,7 @@ package com.accenture.academy.leader;
 
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -18,5 +16,10 @@ class LeaderRestController {
     @GetMapping()
     List<LeaderDao> getAllLeaders(){
         return leaderService.getAllLeaders();
+    }
+
+    @PostMapping
+    void addLeader(@RequestBody LeaderDto leaderDto){
+        leaderService.addLeader(leaderDto);
     }
 }

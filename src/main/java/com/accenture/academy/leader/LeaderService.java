@@ -17,4 +17,8 @@ class LeaderService {
     void addLeader(LeaderDao leaderDao){
         leaderRepository.save(leaderDao);
     }
+
+    void addLeader(LeaderDto leaderDto){
+        leaderRepository.save(LeaderMapper.mapDtoToDao(leaderDto));
+    }
 }
