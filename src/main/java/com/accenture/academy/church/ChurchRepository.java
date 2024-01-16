@@ -22,4 +22,8 @@ class ChurchRepository {
     public Optional<ChurchDao> findByID(Long id){
         return iChurchRepository.findById(id);
     }
+
+    public void deleteById(long id) {
+        iChurchRepository.deleteById(id);
+    }
 }

@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+import static org.springframework.http.HttpStatus.NO_CONTENT;
+
 @RestController()
 @RequestMapping("/api/churches")
 @RequiredArgsConstructor
@@ -38,7 +40,14 @@ class ChurchRestController {
     }
 
     @PutMapping(path = "/{id}")
+    @ResponseStatus(NO_CONTENT)
     void updateChurch(@PathVariable long id, @RequestBody ChurchDto churchDto){
         churchService.updateChurch(id, churchDto);
+    }
+
+    @DeleteMapping(path = "/{id}")
+    @ResponseStatus(NO_CONTENT)
+    void deleteById(@PathVariable long id){
+        churchService.deleteChurchById(id);
     }
 }

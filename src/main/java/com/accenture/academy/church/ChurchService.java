@@ -32,4 +32,8 @@ class ChurchService {
     public void updateChurch(long id, ChurchDto churchDto) {
         churchRepository.save(ChurchMapper.mapDtoToDao(id, churchDto));
     }
+
+    public void deleteChurchById(long id) {
+        churchRepository.deleteById(id);
+    }
 }
