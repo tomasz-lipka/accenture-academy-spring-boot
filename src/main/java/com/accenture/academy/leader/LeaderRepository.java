@@ -22,4 +22,8 @@ class LeaderRepository {
     public Optional<LeaderDao> findByID(Long id){
         return iLeaderRepository.findById(id);
     }
+
+    public void deleteById(long id) {
+        iLeaderRepository.deleteById(id);
+    }
 }

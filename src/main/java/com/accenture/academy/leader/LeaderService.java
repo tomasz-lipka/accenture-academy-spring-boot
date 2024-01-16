@@ -31,4 +31,8 @@ class LeaderService {
                 .findByID(id)
                 .orElseThrow(()->new LeaderNotFoundException("Leader with id " + id + " not found"));
     }
+
+    public void deleteLeaderById(long id) {
+        leaderRepository.deleteById(id);
+    }
 }

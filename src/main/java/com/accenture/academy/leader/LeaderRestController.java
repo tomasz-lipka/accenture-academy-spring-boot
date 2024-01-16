@@ -37,4 +37,10 @@ class LeaderRestController {
     void updateLeader(@PathVariable long id, @RequestBody LeaderDto leaderDto){
         leaderService.updateLeader(id, leaderDto);
     }
+
+    @DeleteMapping(path = "/{id}")
+    @ResponseStatus(NO_CONTENT)
+    void deleteById(@PathVariable long id){
+        leaderService.deleteLeaderById(id);
+    }
 }
