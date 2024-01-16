@@ -26,6 +26,6 @@ class ChurchService {
     public ChurchDao getChurchById(long id) {
         return churchRepository
                 .findByID(id)
-                .orElseThrow();
+                .orElseThrow(()->new ChurchNotFoundException("Church with id " + id + " not found"));
     }
 }
