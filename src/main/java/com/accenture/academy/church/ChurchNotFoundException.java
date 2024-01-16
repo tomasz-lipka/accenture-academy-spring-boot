@@ -1,8 +1,8 @@
 package com.accenture.academy.church;
 
-public class ChurchNotFoundException extends RuntimeException {
+class ChurchNotFoundException extends RuntimeException {
 
-    public ChurchNotFoundException(String message) {
+    ChurchNotFoundException(String message) {
         super(message);
     }
 }
