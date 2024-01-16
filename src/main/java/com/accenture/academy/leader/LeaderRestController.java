@@ -21,9 +21,8 @@ class LeaderRestController {
     List<LeaderDao> getAllLeaders(@RequestParam(required = false) Optional<String> name){
         if(name.isEmpty()) {
             return leaderService.getAllLeaders();
-        } else {
-            return leaderService.getLeaderByName(name.get());
         }
+        return leaderService.getLeaderByName(name.get());
     }
 
     @PostMapping
