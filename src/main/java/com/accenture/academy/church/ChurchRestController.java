@@ -2,6 +2,8 @@ package com.accenture.academy.church;
 
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatusCode;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -24,7 +26,15 @@ class ChurchRestController {
     }
 
     @GetMapping(path = "/{id}")
-    ChurchDao getChurchById(@PathVariable long id){
-        return churchService.getChurchById(id);
+    ResponseEntity getChurchById(@PathVariable long id){
+        try{
+            return ResponseEntity
+                    .status(200)
+                    .body(churchService.getChurchById(id));
+        } catch (ChurchNotFoundException e){
+            return ResponseEntity
+                    .status(404)
+                    .body(e.getMessage());
+        }
     }
 }
