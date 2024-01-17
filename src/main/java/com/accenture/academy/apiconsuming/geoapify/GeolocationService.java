@@ -26,7 +26,7 @@ public class GeolocationService {
             HttpRequest httpRequest = HttpRequest
                     .newBuilder()
                     .GET()
-                    .uri(create("https://api.geoapify.com/v1/geocode/search?text=38%20Upper%20Montagu%20Street%2C%20Westminster%20W1H%201LJ%2C%20United%20Kingdom&apiKey=" + geolocationConfig.getApiKey()))
+                    .uri(create("https://api.geoapify.com/v1/geocode/search?text=38%20Upper%20Montagu%20Street%2C%20Westminster%20W1H%201LJ%2C%20United%20Kingdom&apiKey=" + geolocationConfig.getApikey()))
                     .build();
             HttpResponse httpResponse = httpClient.send(httpRequest, HttpResponse.BodyHandlers.ofString());
             String response = httpResponse.body().toString();

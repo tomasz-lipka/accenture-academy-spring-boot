@@ -8,5 +8,5 @@ import org.springframework.stereotype.Component;
 @Data
 @Component
 public class GeolocationConfig {
-    private String apiKey;
+    private String apikey;
 }
