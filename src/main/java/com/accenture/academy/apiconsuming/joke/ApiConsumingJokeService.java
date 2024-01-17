@@ -1,4 +1,4 @@
-package com.accenture.academy.apiconsuming;
+package com.accenture.academy.apiconsuming.joke;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.annotation.PostConstruct;
@@ -30,6 +30,7 @@ public class ApiConsumingJokeService {
         ObjectMapper objectMapper = new ObjectMapper();
         Joke joke = objectMapper.readValue(response, Joke.class);
 
+        System.out.println("-----------JOKE-------------");
         System.out.println("Sout raw response:");
         System.out.println(response);
 
