@@ -21,7 +21,9 @@ public class BoredActivityRestController {
                     .status(200)
                     .body(activity);
         } catch (IOException | InterruptedException e) {
-            return null;
+            return ResponseEntity
+                    .status(400)
+                    .body("(NO INTERNET CONNECTION) " + e);
         }
     }
 }
