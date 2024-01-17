@@ -17,27 +17,33 @@ import static java.net.URI.create;
 public class ApiConsumingJokeService {
 
     @PostConstruct
-    public void getJoke() throws IOException, InterruptedException {
-        HttpClient httpClient = HttpClient.newHttpClient();
-        HttpRequest httpRequest = HttpRequest
-                .newBuilder()
-                .GET()
-                .uri(create("https://official-joke-api.appspot.com/random_joke"))
-                .build();
-        HttpResponse httpResponse = httpClient.send(httpRequest, HttpResponse.BodyHandlers.ofString());
-        String response = httpResponse.body().toString();
+    public void getJoke()  {
+        try {
+            HttpClient httpClient = HttpClient.newHttpClient();
+            HttpRequest httpRequest = HttpRequest
+                    .newBuilder()
+                    .GET()
+                    .uri(create("https://official-joke-api.appspot.com/random_joke"))
+                    .build();
 
-        ObjectMapper objectMapper = new ObjectMapper();
-        Joke joke = objectMapper.readValue(response, Joke.class);
+            HttpResponse httpResponse = httpClient.send(httpRequest, HttpResponse.BodyHandlers.ofString());
+            String response = httpResponse.body().toString();
 
-        System.out.println("-----------JOKE-------------");
-        System.out.println("Sout raw response:");
-        System.out.println(response);
+            ObjectMapper objectMapper = new ObjectMapper();
+            Joke joke = objectMapper.readValue(response, Joke.class);
 
-        log.info("Logging raw response:");
-        log.info(response);
+            System.out.println("-----------JOKE-------------");
+            System.out.println("Sout raw response:");
+            System.out.println(response);
 
-        log.info("Logging joke object:");
-        log.info(joke.toString());
+            log.info("Logging raw response:");
+            log.info(response);
+
+            log.info("Logging joke object:");
+            log.info(joke.toString());
+
+        } catch (IOException | InterruptedException e) {
+            log.info("(CHECK INTERNET CONNECTION) " + e );
+        }
     }
 }

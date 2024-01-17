@@ -18,28 +18,33 @@ import static java.net.URI.create;
 public class ApiConsumingCatService {
 
     @EventListener(ApplicationReadyEvent.class)
-    public void getCatFact() throws IOException, InterruptedException {
-        HttpClient httpClient = HttpClient.newHttpClient();
-        HttpRequest httpRequest = HttpRequest
-                .newBuilder()
-                .GET()
-                .uri(create("https://catfact.ninja/fact"))
-                .build();
-        HttpResponse httpResponse = httpClient.send(httpRequest, HttpResponse.BodyHandlers.ofString());
-        String response = httpResponse.body().toString();
+    public void getCatFact() {
+        try {
+            HttpClient httpClient = HttpClient.newHttpClient();
+            HttpRequest httpRequest = HttpRequest
+                    .newBuilder()
+                    .GET()
+                    .uri(create("https://catfact.ninja/fact"))
+                    .build();
+            HttpResponse httpResponse = httpClient.send(httpRequest, HttpResponse.BodyHandlers.ofString());
+            String response = httpResponse.body().toString();
 
-        ObjectMapper objectMapper = new ObjectMapper();
-        CatFact catFact = objectMapper.readValue(response, CatFact.class);
+            ObjectMapper objectMapper = new ObjectMapper();
+            CatFact catFact = objectMapper.readValue(response, CatFact.class);
 
-        System.out.println("-----------CAT-------------");
+            System.out.println("-----------CAT-------------");
 
-        System.out.println("Sout raw response:");
-        System.out.println(response);
+            System.out.println("Sout raw response:");
+            System.out.println(response);
 
-        log.info("Logging raw response:");
-        log.info(response);
+            log.info("Logging raw response:");
+            log.info(response);
 
-        log.info("Logging catFact object:");
-        log.info(catFact.toString());
+            log.info("Logging catFact object:");
+            log.info(catFact.toString());
+
+        } catch (IOException | InterruptedException e) {
+            log.info("(CHECK INTERNET CONNECTION) " + e );
+        }
     }
 }
