@@ -1,8 +1,6 @@
 package com.accenture.academy.leader;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Example;
-import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
