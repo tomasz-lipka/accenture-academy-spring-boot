@@ -4,6 +4,6 @@ import lombok.Data;
 
 @Data
 public class Rank {
-    public double importance;
-    public double popularity;
+    private double importance;
+    private double popularity;
 }

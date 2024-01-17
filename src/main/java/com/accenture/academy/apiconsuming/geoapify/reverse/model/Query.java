@@ -4,7 +4,7 @@ import lombok.Data;
 
 @Data
 public class Query {
-    public double lat;
-    public double lon;
-    public String plus_code;
+    private double lat;
+    private double lon;
+    private String plus_code;
 }

@@ -4,11 +4,11 @@ import lombok.Data;
 
 @Data
 public class Timezone {
-    public String name;
-    public String offset_STD;
-    public int offset_STD_seconds;
-    public String offset_DST;
-    public int offset_DST_seconds;
-    public String abbreviation_STD;
-    public String abbreviation_DST;
+    private String name;
+    private String offset_STD;
+    private int offset_STD_seconds;
+    private String offset_DST;
+    private int offset_DST_seconds;
+    private String abbreviation_STD;
+    private String abbreviation_DST;
 }

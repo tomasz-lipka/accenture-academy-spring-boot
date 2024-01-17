@@ -6,8 +6,8 @@ import java.util.ArrayList;
 
 @Data
 public class Feature {
-    public String type;
-    public Properties properties;
-    public Geometry geometry;
-    public ArrayList<Double> bbox;
+    private String type;
+    private Properties properties;
+    private Geometry geometry;
+    private ArrayList<Double> bbox;
 }
