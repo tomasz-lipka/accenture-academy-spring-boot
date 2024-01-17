@@ -1,5 +1,6 @@
-package com.accenture.academy;
+package com.accenture.academy.apiconsuming;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.annotation.PostConstruct;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -26,10 +27,16 @@ public class ApiConsumingJokeService {
         HttpResponse httpResponse = httpClient.send(httpRequest, HttpResponse.BodyHandlers.ofString());
         String response = httpResponse.body().toString();
 
-        System.out.println("Sout");
+        ObjectMapper objectMapper = new ObjectMapper();
+        Joke joke = objectMapper.readValue(response, Joke.class);
+
+        System.out.println("Sout response:");
         System.out.println(response);
 
-        log.info("Logging");
+        log.info("Logging response:");
         log.info(response);
+
+        log.info("Logging joke:");
+        log.info(joke.toString());
     }
 }
