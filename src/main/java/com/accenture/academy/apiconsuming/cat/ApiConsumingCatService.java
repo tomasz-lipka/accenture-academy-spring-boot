@@ -1,8 +1,9 @@
 package com.accenture.academy.apiconsuming.cat;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import jakarta.annotation.PostConstruct;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.boot.context.event.ApplicationReadyEvent;
+import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
@@ -16,7 +17,7 @@ import static java.net.URI.create;
 @Slf4j
 public class ApiConsumingCatService {
 
-    @PostConstruct
+    @EventListener(ApplicationReadyEvent.class)
     public void getCatFact() throws IOException, InterruptedException {
         HttpClient httpClient = HttpClient.newHttpClient();
         HttpRequest httpRequest = HttpRequest

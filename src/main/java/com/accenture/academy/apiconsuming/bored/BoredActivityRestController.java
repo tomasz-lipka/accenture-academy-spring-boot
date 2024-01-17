@@ -1,9 +1,10 @@
 package com.accenture.academy.apiconsuming.bored;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import jakarta.annotation.PostConstruct;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.io.IOException;
 import java.net.http.HttpClient;
@@ -12,12 +13,16 @@ import java.net.http.HttpResponse;
 
 import static java.net.URI.create;
 
-@Service
-@Slf4j
-public class ApiConsumingBoredService {
 
-    @PostConstruct
-    public void getActivity() throws IOException, InterruptedException {
+@Slf4j
+@RestController
+@RequiredArgsConstructor
+public class BoredActivityRestController {
+
+    private final BoredActivityService boredActivityService;
+
+    @GetMapping("bored-activity")
+    public BoredActivity getActivity() throws IOException, InterruptedException {
         HttpClient httpClient = HttpClient.newHttpClient();
         HttpRequest httpRequest = HttpRequest
                 .newBuilder()
@@ -40,5 +45,7 @@ public class ApiConsumingBoredService {
 
         log.info("Logging activity object:");
         log.info(boredActivity.toString());
+
+        return boredActivity;
     }
 }
