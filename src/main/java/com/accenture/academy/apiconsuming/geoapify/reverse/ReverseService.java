@@ -1,7 +1,5 @@
 package com.accenture.academy.apiconsuming.geoapify.reverse;
 
-import com.accenture.academy.apiconsuming.bored.BoredActivity;
-import com.accenture.academy.apiconsuming.geoapify.reverse.model.Feature;
 import com.accenture.academy.apiconsuming.geoapify.reverse.model.Root;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.annotation.PostConstruct;
