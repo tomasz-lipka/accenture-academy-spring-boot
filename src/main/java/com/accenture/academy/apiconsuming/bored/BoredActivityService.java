@@ -15,7 +15,7 @@ import static java.net.URI.create;
 @Slf4j
 class BoredActivityService {
 
-    BoredActivity getActivity() throws IOException, InterruptedException{
+    BoredActivity consumeApi() throws IOException, InterruptedException{
         HttpClient httpClient = HttpClient.newHttpClient();
         HttpRequest httpRequest = HttpRequest
                 .newBuilder()
@@ -27,17 +27,6 @@ class BoredActivityService {
 
         ObjectMapper objectMapper = new ObjectMapper();
         BoredActivity boredActivity = objectMapper.readValue(response, BoredActivity.class);
-
-        System.out.println("-----------ACTIVITY-------------");
-
-        System.out.println("Sout raw response:");
-        System.out.println(response);
-
-        log.info("Logging raw response:");
-        log.info(response);
-
-        log.info("Logging activity object:");
-        log.info(boredActivity.toString());
 
         return boredActivity;
     }
