@@ -30,13 +30,13 @@ public class ApiConsumingJokeService {
         ObjectMapper objectMapper = new ObjectMapper();
         Joke joke = objectMapper.readValue(response, Joke.class);
 
-        System.out.println("Sout response:");
+        System.out.println("Sout raw response:");
         System.out.println(response);
 
-        log.info("Logging response:");
+        log.info("Logging raw response:");
         log.info(response);
 
-        log.info("Logging joke:");
+        log.info("Logging joke object:");
         log.info(joke.toString());
     }
 }
