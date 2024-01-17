@@ -1,5 +1,9 @@
-package com.accenture.academy.apiconsuming.geoapify;
+package com.accenture.academy.apiconsuming.geoapify.reverse;
 
+import com.accenture.academy.apiconsuming.bored.BoredActivity;
+import com.accenture.academy.apiconsuming.geoapify.reverse.model.Feature;
+import com.accenture.academy.apiconsuming.geoapify.reverse.model.Root;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -15,24 +19,31 @@ import static java.net.URI.create;
 @Service
 @Slf4j
 @RequiredArgsConstructor
-public class GeolocationService {
+public class ReverseService {
 
-    private final GeolocationConfig geolocationConfig;
+    private final ReverseConfig reverseConfig;
 
     @PostConstruct
-    void getGeolocation() {
+    void getReverseGeolocation() {
         try {
             HttpClient httpClient = HttpClient.newHttpClient();
             HttpRequest httpRequest = HttpRequest
                     .newBuilder()
                     .GET()
-                    .uri(create("https://api.geoapify.com/v1/geocode/search?text=38%20Upper%20Montagu%20Street%2C%20Westminster%20W1H%201LJ%2C%20United%20Kingdom&apiKey=" + geolocationConfig.getApikey()))
+                    .uri(create("https://api.geoapify.com/v1/geocode/reverse?lat=51.21709661403662&lon=6.7782883744862374&apiKey=" + reverseConfig.getApikey2()))
                     .build();
             HttpResponse httpResponse = httpClient.send(httpRequest, HttpResponse.BodyHandlers.ofString());
             String response = httpResponse.body().toString();
 
-            System.out.println("----------GEOLOCATION---------");
+            System.out.println("----------REVERSE---------");
             System.out.println(response);
+
+            ObjectMapper objectMapper = new ObjectMapper();
+            Root root = objectMapper.readValue(response, Root.class);
+
+            System.out.println("ROOT:");
+            System.out.println(root.toString());
+
         } catch (IOException | InterruptedException e) {
             log.info("(CHECK INTERNET CONNECTION) " + e);
         }
