@@ -1,6 +1,7 @@
 package com.accenture.academy.leader;
 
 
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -26,7 +27,7 @@ class LeaderRestController {
     }
 
     @PostMapping
-    void addLeader(@RequestBody LeaderDto leaderDto){
+    void addLeader(@RequestBody @Valid LeaderDto leaderDto){
         leaderService.addLeader(leaderDto);
     }
 
