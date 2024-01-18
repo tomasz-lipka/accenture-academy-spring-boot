@@ -1,6 +1,7 @@
 package com.accenture.academy.apiconsuming.geoapify.geocoding;
 
 import jakarta.annotation.PostConstruct;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -14,15 +15,16 @@ import static java.net.URI.create;
 
 @Service
 @Slf4j
+@RequiredArgsConstructor
 public class GeolocationService {
 
     @Value("${accenture.academy.geoapify.api-key-from-value}")
     private String apiKey;
+    private final HttpClient httpClient;
 
     @PostConstruct
     void getGeolocation() {
         try {
-            HttpClient httpClient = HttpClient.newHttpClient();
             HttpRequest httpRequest = HttpRequest
                     .newBuilder()
                     .GET()
