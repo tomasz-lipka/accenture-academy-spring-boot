@@ -16,6 +16,6 @@ class ChurchDto {
     private String nameOfCity;
     private Integer numberOfSeats;
     private Integer numberOfMembers;
-    @Min(1000)
+    @Min(value = 1000, message = "Budget must be higher or equal 1000")
     private Double budget;
 }
