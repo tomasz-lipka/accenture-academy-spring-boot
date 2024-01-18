@@ -18,7 +18,6 @@ import static java.net.URI.create;
 @RequiredArgsConstructor
 public class GeolocationService {
 
-    private final GeolocationConfig geolocationConfig;
     @Value("${accenture.academy.geoapify.api-key-from-value}")
     private String apiKey;
 
