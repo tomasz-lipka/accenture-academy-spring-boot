@@ -17,7 +17,7 @@ public class RestController {
 
     @GetMapping("/ip-address")
     String getIPAddress(HttpServletRequest servletRequest){
-        String ipAddress = servletRequest.getHeader("xxx");
+        String ipAddress = servletRequest.getHeader("X-FORWARDED-FOR");
         StringBuilder stringBuilder = new StringBuilder("IP address=");
         String response = "";
         if (ipAddress == null){
