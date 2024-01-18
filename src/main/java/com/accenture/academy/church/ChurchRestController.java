@@ -1,6 +1,7 @@
 package com.accenture.academy.church;
 
 
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -22,7 +23,7 @@ class ChurchRestController {
     }
 
     @PostMapping
-    void addChurch(@RequestBody ChurchDto churchDto){
+    void addChurch(@RequestBody @Valid ChurchDto churchDto){
         churchService.addChurch(churchDto);
     }
 
