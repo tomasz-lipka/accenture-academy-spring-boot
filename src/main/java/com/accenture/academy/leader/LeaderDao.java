@@ -11,7 +11,7 @@ import static jakarta.persistence.GenerationType.*;
 @Entity
 @Data
 @NoArgsConstructor
-class LeaderDao {
+public class LeaderDao {
 
     @Id
     @GeneratedValue(strategy = AUTO)

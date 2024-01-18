@@ -11,13 +11,14 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.springframework.http.HttpStatus.BAD_REQUEST;
 import static org.springframework.http.HttpStatus.NOT_FOUND;
 
 @ControllerAdvice
 public class ChurchGlobalExceptionHandler {
 
     @ResponseBody
-    @ResponseStatus(NOT_FOUND)
+    @ResponseStatus(BAD_REQUEST)
     @ExceptionHandler(BindException.class)
     List<String> bindExceptionHandler(BindException bindException){
         List<FieldError> fieldErrors = bindException.getBindingResult().getFieldErrors();

@@ -11,7 +11,7 @@ import static jakarta.persistence.GenerationType.*;
 @Entity
 @Data
 @NoArgsConstructor
-class ChurchDao {
+public class ChurchDao {
 
     @Id
     @GeneratedValue(strategy = AUTO)
