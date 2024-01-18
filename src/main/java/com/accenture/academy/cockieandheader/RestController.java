@@ -5,6 +5,13 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import java.io.IOException;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
+
+import static java.net.URI.create;
+
 @org.springframework.web.bind.annotation.RestController
 public class RestController {
 
@@ -34,5 +41,19 @@ public class RestController {
     @GetMapping("/key-to-response")
     void addKeyToResponse(HttpServletResponse servletResponse){
         servletResponse.addHeader("my-custom-key", "to-header");
+    }
+
+    @GetMapping("/header-to-ext-api")
+    String sendHeaderToExternalApi() throws IOException, InterruptedException {
+        HttpClient httpClient = HttpClient.newHttpClient();
+        HttpRequest httpRequest = HttpRequest
+                .newBuilder()
+                .GET()
+                .uri(create("https://official-joke-api.appspot.com/random_joke"))
+                .header("custom-header", "custom-header-value")
+                .build();
+        httpClient.send(httpRequest, HttpResponse.BodyHandlers.ofString());
+
+        return "Header: " + httpRequest.headers().toString();
     }
 }
