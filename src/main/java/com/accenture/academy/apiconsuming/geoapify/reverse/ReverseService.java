@@ -28,7 +28,7 @@ public class ReverseService {
             HttpRequest httpRequest = HttpRequest
                     .newBuilder()
                     .GET()
-                    .uri(create("https://api.geoapify.com/v1/geocode/reverse?lat=51.21709661403662&lon=6.7782883744862374&apiKey=" + reverseConfig.getApikey2()))
+                    .uri(create("https://api.geoapify.com/v1/geocode/reverse?lat=51.21709661403662&lon=6.7782883744862374&apiKey=" + reverseConfig.getApikey()))
                     .build();
             HttpResponse httpResponse = httpClient.send(httpRequest, HttpResponse.BodyHandlers.ofString());
             String response = httpResponse.body().toString();
