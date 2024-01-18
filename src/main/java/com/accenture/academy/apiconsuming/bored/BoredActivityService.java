@@ -1,6 +1,7 @@
 package com.accenture.academy.apiconsuming.bored;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
@@ -13,10 +14,12 @@ import static java.net.URI.create;
 
 @Service
 @Slf4j
+@RequiredArgsConstructor
 class BoredActivityService {
 
+    private final HttpClient httpClient;
+
     BoredActivity consumeApi() throws IOException, InterruptedException{
-        HttpClient httpClient = HttpClient.newHttpClient();
         HttpRequest httpRequest = HttpRequest
                 .newBuilder()
                 .GET()

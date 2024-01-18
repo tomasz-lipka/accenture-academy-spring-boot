@@ -3,6 +3,7 @@ package com.accenture.academy.cockieandheader;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import java.io.IOException;
@@ -13,7 +14,10 @@ import java.net.http.HttpResponse;
 import static java.net.URI.create;
 
 @org.springframework.web.bind.annotation.RestController
+@RequiredArgsConstructor
 public class RestController {
+
+    private final HttpClient httpClient;
 
     @GetMapping("/ip-address")
     String getIPAddress(HttpServletRequest servletRequest){
@@ -45,7 +49,6 @@ public class RestController {
 
     @GetMapping("/header-to-ext-api")
     String sendHeaderToExternalApi() throws IOException, InterruptedException {
-        HttpClient httpClient = HttpClient.newHttpClient();
         HttpRequest httpRequest = HttpRequest
                 .newBuilder()
                 .GET()

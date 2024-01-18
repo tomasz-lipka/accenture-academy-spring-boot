@@ -20,11 +20,11 @@ import static java.net.URI.create;
 public class ReverseService {
 
     private final ReverseConfig reverseConfig;
+    private final HttpClient httpClient;
 
     @PostConstruct
     void getReverseGeolocation() {
         try {
-            HttpClient httpClient = HttpClient.newHttpClient();
             HttpRequest httpRequest = HttpRequest
                     .newBuilder()
                     .GET()

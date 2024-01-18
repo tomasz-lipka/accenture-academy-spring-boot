@@ -1,6 +1,7 @@
 package com.accenture.academy.apiconsuming.cat;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;
@@ -15,12 +16,14 @@ import static java.net.URI.create;
 
 @Service
 @Slf4j
+@RequiredArgsConstructor
 public class ApiConsumingCatService {
+
+    private final HttpClient httpClient;
 
     @EventListener(ApplicationReadyEvent.class)
     public void getCatFact() {
         try {
-            HttpClient httpClient = HttpClient.newHttpClient();
             HttpRequest httpRequest = HttpRequest
                     .newBuilder()
                     .GET()

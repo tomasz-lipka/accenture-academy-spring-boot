@@ -2,6 +2,7 @@ package com.accenture.academy.apiconsuming.joke;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.annotation.PostConstruct;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
@@ -14,12 +15,14 @@ import static java.net.URI.create;
 
 @Service
 @Slf4j
+@RequiredArgsConstructor
 public class ApiConsumingJokeService {
+
+    private final HttpClient httpClient;
 
     @PostConstruct
     public void getJoke()  {
         try {
-            HttpClient httpClient = HttpClient.newHttpClient();
             HttpRequest httpRequest = HttpRequest
                     .newBuilder()
                     .GET()
