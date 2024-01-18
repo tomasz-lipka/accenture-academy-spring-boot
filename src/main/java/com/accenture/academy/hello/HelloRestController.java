@@ -3,12 +3,14 @@ package com.accenture.academy.hello;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.context.annotation.Profile;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
 @Slf4j
+@Profile(value = "dev")
 public class HelloRestController {
 
     @GetMapping("/hello")
