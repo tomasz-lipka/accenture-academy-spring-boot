@@ -10,5 +10,5 @@ import java.util.Set;
 class ParishDto {
     private Long leaderId;
     private Long churchId;
-//    private Set<Long> membersIds;
+    private Set<Long> membersIds;
 }

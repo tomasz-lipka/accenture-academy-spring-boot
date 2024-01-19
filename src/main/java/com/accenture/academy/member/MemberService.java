@@ -7,7 +7,7 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-class MemberService {
+public class MemberService {
 
     private final MemberRepository memberRepository;
     List<MemberDao> getAllMembers() {
@@ -16,5 +16,11 @@ class MemberService {
 
     void addMember(MemberDao memberDao){
         memberRepository.save(memberDao);
+    }
+
+    public MemberDao getMemberById(long id) {
+        return memberRepository
+                .findByID(id)
+                .orElseThrow(()->new MemberNotFoundException("Member with id " + id + " not found"));
     }
 }
