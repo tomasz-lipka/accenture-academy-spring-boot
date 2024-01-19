@@ -11,19 +11,19 @@ import java.util.Optional;
 class ChurchRepository {
     private final IChurchRepository iChurchRepository;
 
-    public List<ChurchDao> findAll() {
+    List<ChurchDao> findAll() {
         return iChurchRepository.findAll();
     }
 
-    public void save(ChurchDao churchDao) {
+    void save(ChurchDao churchDao) {
         iChurchRepository.save(churchDao);
     }
 
-    public Optional<ChurchDao> findByID(Long id){
+    Optional<ChurchDao> findByID(Long id){
         return iChurchRepository.findById(id);
     }
 
-    public void deleteById(long id) {
+    void deleteById(long id) {
         iChurchRepository.deleteById(id);
     }
 }

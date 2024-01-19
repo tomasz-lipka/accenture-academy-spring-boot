@@ -10,11 +10,11 @@ import java.util.List;
 class ParishRepository {
     private final IParishRepository iParishRepository;
 
-    public List<ParishDao> findAll() {
+    List<ParishDao> findAll() {
         return iParishRepository.findAll();
     }
 
-    public void save(ParishDao parishDao) {
+    void save(ParishDao parishDao) {
         iParishRepository.save(parishDao);
     }
 }

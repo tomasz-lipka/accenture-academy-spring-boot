@@ -11,15 +11,15 @@ import java.util.Optional;
 class MemberRepository {
     private final IMemberRepository iMemberRepository;
 
-    public List<MemberDao> findAll() {
+    List<MemberDao> findAll() {
         return iMemberRepository.findAll();
     }
 
-    public void save(MemberDao memberDao) {
+    void save(MemberDao memberDao) {
         iMemberRepository.save(memberDao);
     }
 
-    public Optional<MemberDao> findByID(Long id){
+    Optional<MemberDao> findByID(Long id){
         return iMemberRepository.findById(id);
     }
 }

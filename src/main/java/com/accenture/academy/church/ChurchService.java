@@ -29,11 +29,11 @@ public class ChurchService {
                 .orElseThrow(()->new ChurchNotFoundException("Church with id " + id + " not found"));
     }
 
-    public void updateChurch(long id, ChurchDto churchDto) {
+    void updateChurch(long id, ChurchDto churchDto) {
         churchRepository.save(ChurchMapper.mapDtoToDao(id, churchDto));
     }
 
-    public void deleteChurchById(long id) {
+    void deleteChurchById(long id) {
         churchRepository.deleteById(id);
     }
 }

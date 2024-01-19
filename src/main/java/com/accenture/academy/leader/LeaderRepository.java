@@ -11,23 +11,23 @@ import java.util.Optional;
 class LeaderRepository {
     private final ILeaderRepository iLeaderRepository;
 
-    public List<LeaderDao> findAll() {
+    List<LeaderDao> findAll() {
         return iLeaderRepository.findAll();
     }
 
-    public void save(LeaderDao leaderDao) {
+    void save(LeaderDao leaderDao) {
         iLeaderRepository.save(leaderDao);
     }
 
-    public Optional<LeaderDao> findByID(Long id){
+    Optional<LeaderDao> findByID(Long id){
         return iLeaderRepository.findById(id);
     }
 
-    public void deleteById(long id) {
+    void deleteById(long id) {
         iLeaderRepository.deleteById(id);
     }
 
-    public List<LeaderDao> getByName(String name) {
+    List<LeaderDao> getByName(String name) {
         return iLeaderRepository.findByName(name);
     }
 }

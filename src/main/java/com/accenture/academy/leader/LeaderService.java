@@ -32,14 +32,14 @@ public class LeaderService {
                 .orElseThrow(()->new LeaderNotFoundException("Leader with id " + id + " not found"));
     }
 
-    public void deleteLeaderById(long id) {
+    void deleteLeaderById(long id) {
         leaderRepository
                 .findByID(id)
                 .orElseThrow(() -> new LeaderNotFoundException("Leader with id " + id + " not found"));
         leaderRepository.deleteById(id);
     }
 
-    public List<LeaderDao> getLeaderByName(String name) {
+    List<LeaderDao> getLeaderByName(String name) {
         return leaderRepository.getByName(name);
     }
 }
