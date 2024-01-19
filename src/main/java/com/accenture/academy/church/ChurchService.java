@@ -7,7 +7,7 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-class ChurchService {
+public class ChurchService {
 
     private final ChurchRepository churchRepository;
 
@@ -23,7 +23,7 @@ class ChurchService {
         churchRepository.save(ChurchMapper.mapDtoToDao(churchDto));
     }
 
-    ChurchDao getChurchById(long id) {
+    public ChurchDao getChurchById(long id) {
         return churchRepository
                 .findByID(id)
                 .orElseThrow(()->new ChurchNotFoundException("Church with id " + id + " not found"));

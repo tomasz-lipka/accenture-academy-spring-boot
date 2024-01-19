@@ -7,7 +7,7 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-class LeaderService {
+public class LeaderService {
 
     private final LeaderRepository leaderRepository;
     List<LeaderDao> getAllLeaders() {
@@ -26,7 +26,7 @@ class LeaderService {
         leaderRepository.save(LeaderMapper.mapDtoToDao(id, leaderDto));
     }
 
-    LeaderDao getLeaderById(long id) {
+    public LeaderDao getLeaderById(long id) {
         return leaderRepository
                 .findByID(id)
                 .orElseThrow(()->new LeaderNotFoundException("Leader with id " + id + " not found"));

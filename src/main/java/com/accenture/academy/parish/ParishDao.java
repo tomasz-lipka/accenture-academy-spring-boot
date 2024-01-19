@@ -2,16 +2,17 @@ package com.accenture.academy.parish;
 
 import com.accenture.academy.church.ChurchDao;
 import com.accenture.academy.leader.LeaderDao;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToOne;
+import com.accenture.academy.member.MemberDao;
+import jakarta.persistence.*;
 import lombok.Data;
+
+import java.util.Set;
 
 import static jakarta.persistence.GenerationType.AUTO;
 
 @Entity
 @Data
+@Table(name = "PARISH")
 class ParishDao {
 
     @Id
@@ -21,4 +22,7 @@ class ParishDao {
     private LeaderDao leaderDao;
     @OneToOne
     private ChurchDao churchDao;
+    @OneToMany
+    @JoinColumn(name="PARISH_ID")
+    private Set<MemberDao> members;
 }
