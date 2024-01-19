@@ -1,9 +1,6 @@
 package com.accenture.academy.member;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import jakarta.persistence.criteria.CriteriaBuilder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -11,7 +8,8 @@ import lombok.NoArgsConstructor;
 @Entity
 @Data
 @NoArgsConstructor
-class MemberDao {
+@Table(name = "MEMBER")
+public class MemberDao {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
