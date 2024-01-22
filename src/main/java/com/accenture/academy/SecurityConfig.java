@@ -26,8 +26,13 @@ public class SecurityConfig {
                 request -> request
                         .requestMatchers(AntPathRequestMatcher.antMatcher(GET,"/api/**")).hasRole("USER")
                         .requestMatchers(AntPathRequestMatcher.antMatcher(POST,"/api/**")).hasRole("ADMIN")
+                        .requestMatchers(AntPathRequestMatcher.antMatcher("/h2-console/**")).hasRole("ADMIN")
+                        .anyRequest()
+                        .permitAll()
         )
                 .httpBasic(Customizer.withDefaults())
+                .csrf(csrf -> csrf.disable())
+                .headers(header -> header.disable())
                 .sessionManagement(session -> session.sessionCreationPolicy(STATELESS))
                 .build();
     }
