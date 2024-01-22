@@ -2,10 +2,8 @@ package com.accenture.academy;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpMethod;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -15,6 +13,8 @@ import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
+import static org.springframework.http.HttpMethod.*;
+import static org.springframework.http.HttpMethod.GET;
 import static org.springframework.security.config.http.SessionCreationPolicy.STATELESS;
 
 @Configuration
@@ -24,10 +24,8 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
         return httpSecurity.authorizeHttpRequests(
                 request -> request
-                        .requestMatchers(AntPathRequestMatcher.antMatcher("/api/**")).hasRole("USER")
-//                        .requestMatchers(AntPathRequestMatcher.antMatcher(HttpMethod.POST,"/api/**")).hasRole("ADMIN")
-                        .anyRequest()
-                        .permitAll()
+                        .requestMatchers(AntPathRequestMatcher.antMatcher(GET,"/api/**")).hasRole("USER")
+                        .requestMatchers(AntPathRequestMatcher.antMatcher(POST,"/api/**")).hasRole("ADMIN")
         )
                 .httpBasic(Customizer.withDefaults())
                 .sessionManagement(session -> session.sessionCreationPolicy(STATELESS))
