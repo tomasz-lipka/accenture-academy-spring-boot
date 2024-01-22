@@ -12,7 +12,7 @@ import static jakarta.persistence.GenerationType.*;
 @Entity
 @Data
 @NoArgsConstructor
-@Table(name = "PRIEST")
+@Table(name = "LEADER")
 public class LeaderDao {
 
     @Id
