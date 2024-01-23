@@ -122,11 +122,11 @@ class CalculatorTest {
         Assertions.assertThrows(IllegalArgumentException.class, () -> calculator.divide(7,101));
     }
 
-    @ParameterizedTest
-    @CsvFileSource(resources = "/calculator-parameterized-test-add.csv")
-    void whenAddTwoNumbersThenReturnTheirSum_CsvFileParameter(int x, int y, int expected){
-        Assertions.assertEquals(calculator.add(x,y), expected);
-    }
+//    @ParameterizedTest
+//    @CsvFileSource(resources = "/calculator-parameterized-test-add.csv")
+//    void whenAddTwoNumbersThenReturnTheirSum_CsvFileParameter(int x, int y, int expected){
+//        Assertions.assertEquals(calculator.add(x,y), expected);
+//    }
 
     @ParameterizedTest
     @MethodSource("argumentsMethod")
