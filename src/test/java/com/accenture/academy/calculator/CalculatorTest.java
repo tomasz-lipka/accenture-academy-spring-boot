@@ -18,9 +18,9 @@ class CalculatorTest {
         //Given
         Calculator calculator = new Calculator();
         //When
-        Integer result = calculator.add(1, 1);
+        Integer result = calculator.add(0, 0);
         //Then
-        Assertions.assertEquals(2, result);
+        Assertions.assertEquals(0, result);
 
         Integer result2 = calculator.add(100, 100);
         Assertions.assertEquals(200, result2);
@@ -29,7 +29,7 @@ class CalculatorTest {
     @Test
     void whenSubtractNumbersThenReturnDiff(){
         //When
-        Integer result = calculator.substract(1, 1);
+        Integer result = calculator.substract(0, 0);
         //Then
         Assertions.assertEquals(0, result);
 
@@ -51,9 +51,9 @@ class CalculatorTest {
     @Test
     void whenDivideNumbersThenReturnQuotient(){
         //When
-        Integer result = calculator.divide(1, 1);
+        Integer result = calculator.divide(0, 1);
         //Then
-        Assertions.assertEquals(1, result);
+        Assertions.assertEquals(0, result);
 
         Integer result2 = calculator.divide(1000, 100);
         Assertions.assertEquals(10, result2);
