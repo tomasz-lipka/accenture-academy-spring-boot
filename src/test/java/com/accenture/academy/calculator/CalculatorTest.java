@@ -46,4 +46,9 @@ class CalculatorTest {
         //Then
         Assertions.assertEquals(4, result);
     }
+
+    @Test
+    void whenDivideByZeroThenReturnException(){
+        Assertions.assertThrows(IllegalArgumentException.class, () -> calculator.divide(2,0));
+    }
 }
