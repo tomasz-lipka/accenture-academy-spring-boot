@@ -18,33 +18,45 @@ class CalculatorTest {
         //Given
         Calculator calculator = new Calculator();
         //When
-        Integer result = calculator.add(1, 4);
+        Integer result = calculator.add(1, 1);
         //Then
-        Assertions.assertEquals(5, result);
+        Assertions.assertEquals(2, result);
+
+        Integer result2 = calculator.add(100, 100);
+        Assertions.assertEquals(200, result2);
     }
 
     @Test
     void whenSubtractNumbersThenReturnDiff(){
         //When
-        Integer result = calculator.substract(1, 4);
+        Integer result = calculator.substract(1, 1);
         //Then
-        Assertions.assertEquals(-3, result);
+        Assertions.assertEquals(0, result);
+
+        Integer result2 = calculator.substract(100, 100);
+        Assertions.assertEquals(0, result2);
     }
 
     @Test
     void whenMultiplyNumbersThenReturnProduct(){
         //When
-        Integer result = calculator.multiply(1, 4);
+        Integer result = calculator.multiply(30, 30);
         //Then
-        Assertions.assertEquals(4, result);
+        Assertions.assertEquals(900, result);
+
+        Integer result2 = calculator.multiply(1, 1);
+        Assertions.assertEquals(1, result2);
     }
 
     @Test
     void whenDivideNumbersThenReturnQuotient(){
         //When
-        Integer result = calculator.divide(8, 2);
+        Integer result = calculator.divide(1, 1);
         //Then
-        Assertions.assertEquals(4, result);
+        Assertions.assertEquals(1, result);
+
+        Integer result2 = calculator.divide(1000, 100);
+        Assertions.assertEquals(10, result2);
     }
 
     @Test
