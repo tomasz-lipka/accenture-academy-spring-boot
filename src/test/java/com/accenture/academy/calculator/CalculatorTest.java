@@ -3,6 +3,12 @@ package com.accenture.academy.calculator;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.CsvFileSource;
+import org.junit.jupiter.params.provider.MethodSource;
+
+import java.util.stream.Stream;
 
 class CalculatorTest {
 
@@ -114,5 +120,25 @@ class CalculatorTest {
     @Test
     void whenDivideSecondInputIsAbove100ThenReturnException(){
         Assertions.assertThrows(IllegalArgumentException.class, () -> calculator.divide(7,101));
+    }
+
+    @ParameterizedTest
+    @CsvFileSource(resources = "/calculator-parameterized-test-add.csv")
+    void whenAddTwoNumbersThenReturnTheirSum_CsvFileParameter(int x, int y, int expected){
+        Assertions.assertEquals(calculator.add(x,y), expected);
+    }
+
+    @ParameterizedTest
+    @MethodSource("argumentsMethod")
+    void whenAddTwoNumbersThenReturnTheirSum_MethodParameter(int x, int y, int expected){
+        Assertions.assertEquals(calculator.add(x,y), expected);
+    }
+
+    private static Stream<Arguments> argumentsMethod(){
+        return Stream.of(
+                Arguments.of(2,3,5),
+                Arguments.of(2,8,10),
+                Arguments.of(2,7,9)
+        );
     }
 }
