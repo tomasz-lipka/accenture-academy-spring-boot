@@ -14,7 +14,7 @@ class CalculatorTest {
     }
 
     @Test
-    void testAdd(){
+    void whenAddNumbersThenReturnSum(){
         //Given
         Calculator calculator = new Calculator();
         //When
@@ -24,7 +24,7 @@ class CalculatorTest {
     }
 
     @Test
-    void testSubtract(){
+    void whenSubtractNumbersThenReturnDiff(){
         //When
         Integer result = calculator.substract(1, 4);
         //Then
@@ -32,7 +32,7 @@ class CalculatorTest {
     }
 
     @Test
-    void testMultiply(){
+    void whenMultiplyNumbersThenReturnProduct(){
         //When
         Integer result = calculator.multiply(1, 4);
         //Then
@@ -40,7 +40,7 @@ class CalculatorTest {
     }
 
     @Test
-    void testDivide(){
+    void whenDivideNumbersThenReturnQuotient(){
         //When
         Integer result = calculator.divide(8, 2);
         //Then
