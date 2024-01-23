@@ -48,7 +48,7 @@ class ChurchServiceTest {
     }
 
     @Test
-    void testGetById(){
+    void testGetChurchById(){
         ChurchDao churchDao = new ChurchDao(
                 "Kościół sw. Krzyża",
                 "Warszawa",
@@ -59,6 +59,13 @@ class ChurchServiceTest {
         Mockito.when(churchRepository.findByID(1L)).thenReturn(Optional.of(churchDao));
         assertEquals(churchDao, churchService.getChurchById(1L));
     }
+
+    @Test
+    void testGetChurchByIdException(){
+        Mockito.when(churchRepository.findByID(99L)).thenReturn(Optional.empty());
+        assertThrows(ChurchNotFoundException.class, () -> churchService.getChurchById(99L));
+    }
+
 
     @Test
     void testUpdateChurch() {
