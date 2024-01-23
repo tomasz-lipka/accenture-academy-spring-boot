@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.ArgumentMatchers.any;
 
 @ExtendWith(MockitoExtension.class)
 class ChurchServiceTest {
@@ -62,10 +63,9 @@ class ChurchServiceTest {
 
     @Test
     void testGetChurchByIdException(){
-        Mockito.when(churchRepository.findByID(99L)).thenReturn(Optional.empty());
+        Mockito.when(churchRepository.findByID(any())).thenReturn(Optional.empty());
         assertThrows(ChurchNotFoundException.class, () -> churchService.getChurchById(99L));
     }
-
 
     @Test
     void testUpdateChurch() {
