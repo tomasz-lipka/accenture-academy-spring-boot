@@ -18,6 +18,9 @@ public class LeaderIntegrationTest {
     @Autowired
     MockMvc mockMvc;
 
+    @Autowired
+    LeaderService leaderService;
+
     @Test
     @WithMockUser(roles = "ADMIN")
     void postTest() throws Exception {
@@ -43,8 +46,9 @@ public class LeaderIntegrationTest {
                                 .contentType("application/json")
                                 .content(objectMapper.writeValueAsString(leaderDto)));
 
+        int sizeOfLeaderList = leaderService.getAllLeaders().size();
         mockMvc.perform(
-                        MockMvcRequestBuilders.delete("http://localhost:8080/api/leaders/4")
+                        MockMvcRequestBuilders.delete("http://localhost:8080/api/leaders/" + sizeOfLeaderList)
                                 )
                 .andDo(MockMvcResultHandlers.print())
                 .andExpect(MockMvcResultMatchers.status().is(204));
