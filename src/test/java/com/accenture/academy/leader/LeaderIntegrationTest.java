@@ -31,4 +31,22 @@ public class LeaderIntegrationTest {
                 .andDo(MockMvcResultHandlers.print())
                 .andExpect(MockMvcResultMatchers.status().is(200));
     }
+
+    @Test
+    @WithMockUser(roles = "ADMIN")
+    void deleteTest() throws Exception {
+        LeaderDto leaderDto = new LeaderDto("Ggzrzr", 22);
+        ObjectMapper objectMapper = new ObjectMapper();
+
+        mockMvc.perform(
+                        MockMvcRequestBuilders.post("http://localhost:8080/api/leaders")
+                                .contentType("application/json")
+                                .content(objectMapper.writeValueAsString(leaderDto)));
+
+        mockMvc.perform(
+                        MockMvcRequestBuilders.delete("http://localhost:8080/api/leaders/4")
+                                )
+                .andDo(MockMvcResultHandlers.print())
+                .andExpect(MockMvcResultMatchers.status().is(204));
+    }
 }
